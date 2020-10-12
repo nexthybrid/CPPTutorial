@@ -18,7 +18,11 @@ A Tic Tac Toe game played in an executable file. Original version could be found
 ### If Conditions in C/C++
 An effficient way to express if condition in one line:
 `variable = Condition ? ResultForYes : ResultForNo`
+<<<<<<< HEAD
 ![conditional expression](/pictures/Conditional-or-Ternary-Operator.jpg)
+=======
+![conditional expression](/Pictures/Conditional-or-Ternary-Operator.jpg)
+>>>>>>> 22d543e37243ff2066534aa77a1a74739fb12f04
 
 ### Global Variables
 A variable defined outside any functions is a global variable, and could be called within any function without declaring it as an explicit input
