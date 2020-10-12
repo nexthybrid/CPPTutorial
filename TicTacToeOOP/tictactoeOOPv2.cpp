@@ -34,7 +34,7 @@ void TicTacToe::BuildGrid() {
 	int k = 1;
 	for(int i = 0; i < 3; i++) {
 		for(int j = 0; j < 3; j++) {
-			grid[i][j] = (char)k + '0';
+			grid[i][j] = (char)k + '0';		// here integer k is converted to character and added to character '0'.
 			k++;
 		}
 	}
@@ -72,7 +72,7 @@ bool TicTacToe::CheckValid(char choice) {
 
 // Update function updates the grid with the valid choice made by the user
 void TicTacToe::Update(char choice, int player) {
-	int temp_count = 0, flag = 0;
+	int temp_count = 0, flag = 0;	// temp_count goes from 0 to 9 until it reaches 'choice', at which point the corresponding grid marker will be updated. flag=1 stands for 'the matching grid point is found and updated, skip running the remaining rows'.
 	for(int i = 0; i < 3; i++) {
 		for(int j = 0; j < 3; j++) {
 			temp_count++;
@@ -93,7 +93,6 @@ void TicTacToe::Choice() {
 		cout << "Player 1 : ";
 		cin >> choice;
 		isTrue = CheckValid(choice);
-		//cout << "isTrue = " << isTrue << "\n";
 		if(isTrue == true) {
 			Update(choice, 1);
 			count++;
@@ -104,7 +103,6 @@ void TicTacToe::Choice() {
 		cout << "Player 2 : ";
 		cin >> choice;
 		isTrue = CheckValid(choice);
-		//cout << "isTrue = " << isTrue << "\n";
 		if(isTrue == true) {
 			Update(choice, 2);
 			count++;
@@ -116,7 +114,7 @@ void TicTacToe::Choice() {
 // Check function checks whether any player won the game or the
 // game is a draw
 char TicTacToe::Check() {
-	win = 'c';
+	win = 'c';					// win = 'c' is a default dummy value
 	// player 1 (horizontal)
 	if(grid[0][0] == 'x' && grid[0][1] == 'x' && grid[0][2] == 'x') 
 		win = '1';
@@ -159,7 +157,7 @@ char TicTacToe::Check() {
         if(grid[0][2] == '0' && grid[1][1] == '0' && grid[2][0] == '0')
                 win = '2';
 
-	int count_non_digit = 0;
+	int count_non_digit = 0;	//when count_non_digit becomes 9, there's 9 non-digits in the grid, indicating a draw.
 	if(win == 'c') {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
@@ -175,14 +173,14 @@ char TicTacToe::Check() {
 int TicTacToe::count = 0;
 
 int main() { 
-	TicTacToe t1;
-	t1.BuildGrid();
-	t1.PrintGrid();
-	while(1) {
-		t1.Choice();
-		char win = t1.Check();
+	TicTacToe t1;						// create a TicTacToe object
+	t1.BuildGrid();						// initialize 3x3 grid data
+	t1.PrintGrid();						// print initial grid
+	while(1) {							// permanent while loop, only exit is to break
+		t1.Choice();					// Choice(): takes player input and update grid
+		char win = t1.Check();			// Check(): check game status
 		cout << "\n";
-		t1.PrintGrid();
+		t1.PrintGrid();					// print updated grid after player action
 		if(win == 'd') {
 			cout << "Match Draw\n";
 			cout << "\n";
@@ -199,7 +197,7 @@ int main() {
 			break;
 		}
 	}
-    cin.ignore();           // cin.ignore() and cin.get() serves as a process where user types something but nothing happens, this gives user a sense of transition
+    cin.ignore();           // cin.ignore() and cin.get() serves as a process where user types something but nothing happens, this gives user a sense of transition, also allowing the cout command from previous lines to be seen by user before the exe program shuts itself down.
     cin.get();
 	return 0;
 
